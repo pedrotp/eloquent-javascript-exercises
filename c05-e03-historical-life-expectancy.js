@@ -13,20 +13,16 @@ function assignCentury(group, person) {
     else {
       group[Math.ceil(person.died / 100)] = [(getAge(person))];
     };
-  };
+};
 
-function groupBy(array) {
+function groupBy(array, f) {
   var group = {};
-  array.forEach(assignCentury.bind(null,group));
-  return group;
-}; 
-
-function groupAverages(group) {
+  array.forEach(f.bind(null,group));
   Object.keys(group).forEach( function(x) { group[x] = Math.round(average(group[x])*10)/10 } );
   return group;
 };
 
-console.log(groupAverages(groupBy(ancestry)));
+console.log(groupBy(ancestry, assignCentury));
 
 // → 16: 43.5
 //   17: 51.2
