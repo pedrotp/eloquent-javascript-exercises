@@ -1,0 +1,29 @@
+// Helpers
+
+directions
+directionNames
+randomElement
+elementFromChar
+charFromElement
+
+// World interaction
+
+Vector
+Grid
+View
+
+// Critters
+
+BouncingCritter
+Wall
+WallFollower
+dirPlus
+Plant
+PlantEater
+SmartPlantEater
+Tiger
+
+// Worlds 
+
+World
+LifelikeWorld
