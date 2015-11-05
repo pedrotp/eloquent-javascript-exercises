@@ -23,7 +23,7 @@ function buildTable(data) {
     for (var j = 0; j < cols.length; j++) {
       var newCol = document.createElement("td");
       newCol.appendChild(document.createTextNode(data[i][cols[j]]));
-      if (!isNaN(newCol.textContent)) newCol.className = "numCell";
+      if (!isNaN(newCol.textContent)) newCol.style.textAlign = "right";
       newRow.appendChild(newCol);
     }
     newTable.appendChild(newRow);
@@ -32,10 +32,5 @@ function buildTable(data) {
 }
   
 document.body.appendChild(buildTable(MOUNTAINS)); 
-  
-var nums = document.getElementsByClassName("numCell");
-for (var i = 0; i < nums.length; i++) {
-  nums[i].style.textAlign = "right";
-}
   
 </script> 
