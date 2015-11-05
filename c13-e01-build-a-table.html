@@ -1,0 +1,41 @@
+<style>
+  /* Defines a cleaner look for tables */
+  table  { border-collapse: collapse; }
+  td, th { border: 1px solid black; padding: 3px 8px; }
+  th     { text-align: left; }
+</style>
+
+<script>
+function buildTable(data) {
+  var newTable = document.createElement("table");
+  var topRow = document.createElement("tr");
+  var cols = Object.keys(data[0]);
+  
+  for (var h = 0; h < cols.length; h++) {
+    var newCol = document.createElement("th");
+    newCol.appendChild(document.createTextNode(cols[h].toUpperCase()));
+    topRow.appendChild(newCol);
+  }
+  newTable.appendChild(topRow);
+  
+  for (var i = 0; i < data.length; i++) {
+    var newRow = document.createElement("tr");
+    for (var j = 0; j < cols.length; j++) {
+      var newCol = document.createElement("td");
+      newCol.appendChild(document.createTextNode(data[i][cols[j]]));
+      if (!isNaN(newCol.textContent)) newCol.className = "numCell";
+      newRow.appendChild(newCol);
+    }
+    newTable.appendChild(newRow);
+  }
+  return newTable;
+}
+  
+document.body.appendChild(buildTable(MOUNTAINS)); 
+  
+var nums = document.getElementsByClassName("numCell");
+for (var i = 0; i < nums.length; i++) {
+  nums[i].style.textAlign = "right";
+}
+  
+</script> 
