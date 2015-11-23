@@ -1,0 +1,27 @@
+<img src="img/cat.png" id="cat" style="position: absolute">
+<img src="img/hat.png" id="hat" style="position: absolute">
+       
+<script>
+  
+  var cat = document.querySelector("#cat");
+  var hat = document.querySelector("#hat");
+
+  var angle = 0, lastTime = null;
+  function animate(time) {
+    if (lastTime != null)
+      angle += (time - lastTime) * 0.001;
+    lastTime = time;
+    var topPos = (Math.sin(angle) * 40) + 100, leftPos = (Math.cos(angle) * 200) + 400;
+    
+    cat.style.top = topPos + "px";
+    cat.style.left = leftPos + "px";
+    
+    // The hat will orbit the cat throughout the cat's journey
+    hat.style.top = topPos + (Math.sin(angle) * 100) + "px";
+    hat.style.left = leftPos + (Math.cos(angle) * 100) + "px";
+    
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+  
+</script> 
